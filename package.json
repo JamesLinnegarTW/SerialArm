@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "aws-iot-device-sdk": "^2.2.1",
+    "npm": "^5.8.0",
     "serialport": "^6.1.1"
   },
   "devDependencies": {},
