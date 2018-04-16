@@ -1,20 +1,6 @@
 var awsIot = require('aws-iot-device-sdk');
 var SerialPort = require('serialport');
-/*
-SerialPort
-  .list()
-  .then((data)=>{
-    let usb = data.filter((element)=> {
-      return element.comName.includes("usb");
-    });
-    return new Promise((resolve, reject)=> {
-      resolve(usb);
-    });
-  })
-  .then((ports)=> {
-    var port = ports[0];
-  });
-*/
+
 
 var port = new SerialPort(process.env.PORT, {
   baudRate: 9600
@@ -36,7 +22,7 @@ port
 
 
 
-var device = awsIot.device({
+var broker = awsIot.device({
    keyPath: './certs/MacbookPro.private.key',
   certPath: './certs/MacbookPro.cert.pem',
     caPath: './certs/root-CA.crt',
@@ -45,10 +31,10 @@ var device = awsIot.device({
 });
 
 
-device
+broker
   .on('connect', function() {
     console.log('Connected to Broker');
-    device.subscribe('/arm');
+    broker.subscribe('/arm');
   })
   .on('message', function(topic, payload) {
     const data = JSON.parse(payload.toString());
