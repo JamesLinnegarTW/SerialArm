@@ -51,8 +51,8 @@ function handleMessage(topic, payload){
 
 
 const device = awsIot.device({
-   keyPath: "./certs/MacBookSemiPro.private.key",
-  certPath: "./certs/MacBookSemiPro.cert.pem",
+   keyPath: "./certs/private.key",
+  certPath: "./certs/cert.pem",
     caPath: "./certs/root-CA.crt",
   clientId: "robot-arm",
       host: "a2hsm6d1kkjcod-ats.iot.us-east-1.amazonaws.com"
