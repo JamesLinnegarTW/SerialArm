@@ -46,6 +46,7 @@ function handleMessage(topic, payload){
       console.log("unknown instruction", data);
       break;
 }
+}
 
 
 const device = awsIot.device({
@@ -62,9 +63,7 @@ device
   });
 
 device
-  .on('message', function(topic, payload) {
-    console.log('message', topic, payload.toString());
-  });
+  .on('message', handleMessage);
 
 device
    .on('close', function() {
