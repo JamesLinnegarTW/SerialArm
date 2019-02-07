@@ -9,6 +9,7 @@ var arm = new SerialPort(process.env.PORT, {
 
 function handleMessage(topic, payload){
   const data = JSON.parse(payload.toString());
+  console.log(data);
   switch(data.instruction){
     case "wake":
       arm.write("w");
